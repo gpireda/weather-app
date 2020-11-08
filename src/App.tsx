@@ -4,6 +4,7 @@ import './App.css'
 
 import Button from 'components/Button/Button'
 import Cities from 'components/Cities/Cities'
+import Layout from 'components/Layout/Layout'
 import Map from 'components/Map/Map'
 
 import useCities from 'hooks/useCities'
@@ -27,7 +28,7 @@ const App = () => {
   }
 
   return (
-    <>
+    <Layout>
       <Map latitude={latitude!} longitude={longitude!} onCoordinatesChange={onCoordinatesChange} />
 
       <Switch>
@@ -41,7 +42,7 @@ const App = () => {
           {cities && <Cities cities={cities} />}
         </Route>
       </Switch>
-    </>
+    </Layout>
   )
 }
 
