@@ -4,5 +4,5 @@ interface MapProps {
   defaultZoom?: number
   latitude: number
   longitude: number
-  onCoordinatesChange: ({ latitude, longitude }: ClickEventValue) => void
+  onCoordinatesChange: ({ latitude, longitude }: ClickEventValue & GeographicalPoint) => void
 }

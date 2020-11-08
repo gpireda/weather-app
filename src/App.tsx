@@ -1,11 +1,20 @@
 import React from 'react'
 import './App.css'
 
-function App(): React.ReactElement {
+import Map from 'components/Map/Map'
+import useCoordinates from 'hooks/useCoordinates'
+
+const App = () => {
+  const { isLoading, latitude, longitude, onCoordinatesChange } = useCoordinates()
+
+  if (isLoading) {
+    return <p>Loading</p>
+  }
+
   return (
-    <div className='App'>
-      <p>Weather App</p>
-    </div>
+    <>
+      <Map latitude={latitude!} longitude={longitude!} onCoordinatesChange={onCoordinatesChange} />
+    </>
   )
 }
 

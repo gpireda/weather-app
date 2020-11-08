@@ -1,6 +1,6 @@
 import React from 'react'
 import { ReactComponent as MarkerSvg } from './marker.svg'
 
-const Marker: React.FC<GeographicalPoint> = (): React.ReactElement => <MarkerSvg />
+const Marker: React.FC<GeographicalPoint> = () => <MarkerSvg />
 
 export default Marker
