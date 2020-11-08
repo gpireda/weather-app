@@ -1,9 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Cities: React.FC<CitiesProps> = ({ cities }) => (
   <ul>
     {cities.map((city: City) => (
-      <li key={city.name}>{city.name}</li>
+      <Link key={city.name} to={`/${city.name}`}>
+        <li>{city.name}</li>
+      </Link>
     ))}
   </ul>
 )
