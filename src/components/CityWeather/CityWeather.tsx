@@ -13,8 +13,8 @@ const CityWeather: React.FC<CityWeatherProps> = ({ cities = [] }) => {
   }
 
   return (
-    <section>
-      <Link to='/'>Return</Link>
+    <>
+      <Link to='/'>Close</Link>
 
       <Weather
         feelsLike={currentCity.main.feels_like}
@@ -25,7 +25,7 @@ const CityWeather: React.FC<CityWeatherProps> = ({ cities = [] }) => {
         pressure={currentCity.main.pressure}
         temperature={currentCity.main.temp}
       />
-    </section>
+    </>
   )
 }
 

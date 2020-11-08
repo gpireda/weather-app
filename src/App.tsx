@@ -1,9 +1,9 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
-import './App.css'
+import { Route } from 'react-router-dom'
 
 import Button from 'components/Button/Button'
 import Cities from 'components/Cities/Cities'
+import CityWeather from 'components/CityWeather/CityWeather'
 import Layout from 'components/Layout/Layout'
 import Map from 'components/Map/Map'
 
@@ -11,7 +11,6 @@ import useCities from 'hooks/useCities'
 import useCoordinates from 'hooks/useCoordinates'
 
 import client from 'utils/client'
-import CityWeather from 'components/CityWeather/CityWeather'
 
 const App = () => {
   const { isLoading, latitude, longitude, onCoordinatesChange } = useCoordinates()
@@ -31,17 +30,21 @@ const App = () => {
     <Layout>
       <Map latitude={latitude!} longitude={longitude!} onCoordinatesChange={onCoordinatesChange} />
 
-      <Switch>
-        <Route path='/:city'>
-          <CityWeather cities={cities} />
-        </Route>
-
+      <div style={{ display: 'flex' }}>
         <Route path='/'>
-          <Button onClick={handleFetchCitiesButtonClick}>Search</Button>
+          <section style={{ width: '50%' }}>
+            <Button onClick={handleFetchCitiesButtonClick}>Search</Button>
 
-          {cities && <Cities cities={cities} />}
+            {cities && <Cities cities={cities} />}
+          </section>
         </Route>
-      </Switch>
+
+        <Route path='/:city'>
+          <section style={{ width: '50%' }}>
+            <CityWeather cities={cities} />
+          </section>
+        </Route>
+      </div>
     </Layout>
   )
 }
