@@ -10,7 +10,7 @@ function useCoordinates() {
     getGeolocationCoordinates(handleCoordinatesChange)
   }, [])
 
-  function handleCoordinatesChange({ latitude, longitude }: GeographicalPoint): void {
+  function handleCoordinatesChange({ latitude, longitude }: GeographicalPoint) {
     setLatitude(latitude)
     setLongitude(longitude)
   }

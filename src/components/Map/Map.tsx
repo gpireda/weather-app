@@ -5,8 +5,6 @@ import Marker from 'components/Marker/Marker'
 
 import styles from './Map.module.scss'
 
-import { MapProps } from 'types/MapProps'
-
 const Map: React.FC<MapProps> = ({
   defaultZoom = 11,
   latitude,
@@ -18,7 +16,7 @@ const Map: React.FC<MapProps> = ({
       bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY ?? '' }}
       center={{ lat: latitude, lng: longitude }}
       defaultZoom={defaultZoom}
-      onClick={onCoordinatesChange}
+      onClick={({ lat, lng }) => onCoordinatesChange({ latitude: lat, longitude: lng })}
     >
       <Marker latitude={latitude} longitude={longitude} />
     </GoogleMapReact>
