@@ -1,10 +1,12 @@
+import camelCase from 'camelcase-keys'
+
 import { useState } from 'react'
 
 function useCities() {
   const [cities, setCities] = useState<Array<City>>()
 
   function handleCitiesChanged({ list }: { list: Array<City> }) {
-    setCities(list)
+    setCities(camelCase(list))
   }
 
   function resetCities() {

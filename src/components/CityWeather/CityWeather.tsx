@@ -5,7 +5,7 @@ import Weather from 'components/Weather/Weather'
 
 import useCurrentCity from 'hooks/useCurrentCity'
 
-const CityWeather: React.FC<any> = ({ cities = [] }) => {
+const CityWeather: React.FC<CityWeatherProps> = ({ cities = [] }) => {
   const currentCity = useCurrentCity({ cities })
 
   if (!currentCity) {

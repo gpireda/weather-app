@@ -1,6 +1,6 @@
 import React from 'react'
 
-const WeatherDetails: React.FC<any> = ({
+const Weather: React.FC<WeatherProps> = ({
   feelsLike,
   humidity,
   maximumTemperature,
@@ -21,4 +21,4 @@ const WeatherDetails: React.FC<any> = ({
   </>
 )
 
-export default WeatherDetails
+export default Weather
