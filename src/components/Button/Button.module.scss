@@ -1,0 +1,21 @@
+.button {
+  background: var(--color-green);
+  border-radius: var(--spacing-medium);
+  border: none;
+  color: var(--color-white);
+  cursor: pointer;
+  font-size: var(--spacing-medium);
+  font-weight: bold;
+  height: var(--spacing-large);
+  outline: none;
+  padding: var(--spacing-small);
+  text-transform: uppercase;
+  transition: background 0.3s ease-in-out;
+  user-select: none;
+  width: 30%;
+
+  &:hover {
+    background: var(--color-green-dark);
+    transition: background 0.3s ease-in-out;
+  }
+}

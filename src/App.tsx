@@ -6,15 +6,19 @@ import Cities from 'components/Cities/Cities'
 import CityWeather from 'components/CityWeather/CityWeather'
 import Layout from 'components/Layout/Layout'
 import Map from 'components/Map/Map'
+import Section from 'components/Section/Section'
+import Spinner from 'components/Spinner/Spinner'
 
 import useCities from 'hooks/useCities'
 import useCoordinates from 'hooks/useCoordinates'
 
 import client from 'utils/client'
 
+import styles from './App.module.scss'
+
 const App = () => {
   const { isLoading, latitude, longitude, onCoordinatesChange } = useCoordinates()
-  const { cities, onCitiesChanged, onCitiesReset } = useCities()
+  const { cities, isFetching, onCitiesChanged, onCitiesReset } = useCities()
 
   if (isLoading) {
     return <p>Loading</p>
@@ -30,19 +34,21 @@ const App = () => {
     <Layout>
       <Map latitude={latitude!} longitude={longitude!} onCoordinatesChange={onCoordinatesChange} />
 
-      <div style={{ display: 'flex' }}>
+      <div className={styles.container}>
         <Route path='/'>
-          <section style={{ width: '50%' }}>
+          <Section>
             <Button onClick={handleFetchCitiesButtonClick}>Search</Button>
 
+            {isFetching && <Spinner />}
+
             {cities && <Cities cities={cities} />}
-          </section>
+          </Section>
         </Route>
 
         <Route path='/:city'>
-          <section style={{ width: '50%' }}>
+          <Section>
             <CityWeather cities={cities} />
-          </section>
+          </Section>
         </Route>
       </div>
     </Layout>

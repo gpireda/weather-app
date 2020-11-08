@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, Redirect } from 'react-router-dom'
 
+import Button from 'components/Button/Button'
 import Weather from 'components/Weather/Weather'
 
 import useCurrentCity from 'hooks/useCurrentCity'
@@ -14,7 +15,9 @@ const CityWeather: React.FC<CityWeatherProps> = ({ cities = [] }) => {
 
   return (
     <>
-      <Link to='/'>Close</Link>
+      <Link to='/'>
+        <Button>Close</Button>
+      </Link>
 
       <Weather
         feelsLike={currentCity.main.feels_like}

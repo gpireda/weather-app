@@ -15,6 +15,7 @@ function useCities() {
 
   return {
     cities,
+    isFetching: cities?.length === 0,
     onCitiesChanged: handleCitiesChanged,
     onCitiesReset: resetCities,
   }

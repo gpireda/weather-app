@@ -1,3 +1,3 @@
 interface ButtonProps {
-  onClick: () => void
+  onClick?: () => void
 }
