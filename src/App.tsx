@@ -50,7 +50,7 @@ const App = () => {
           <Section>
             <Button onClick={handleFetchCitiesButtonClick}>Search</Button>
 
-            {isFetching && <Spinner />}
+            {isFetching && <Spinner height={40} />}
 
             {cities && <Cities cities={cities} />}
           </Section>
