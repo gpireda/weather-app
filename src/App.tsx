@@ -17,6 +17,7 @@ import useViewport from 'hooks/useViewport'
 import client from 'utils/client'
 
 import styles from './App.module.scss'
+import Wrapper from 'components/Wrapper/Wrapper'
 
 const App = () => {
   const { isMobile } = useViewport()
@@ -48,9 +49,11 @@ const App = () => {
       <div className={styles.container}>
         <Route path='/'>
           <Section>
-            <Button disabled={isFetching} onClick={handleFetchCitiesButtonClick}>
-              Search
-            </Button>
+            <Wrapper classNames={['start', 'full-width']}>
+              <Button disabled={isFetching} onClick={handleFetchCitiesButtonClick}>
+                Search
+              </Button>
+            </Wrapper>
 
             {isFetching && <Spinner height={40} />}
 

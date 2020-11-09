@@ -1,13 +1,17 @@
 .section {
   display: flex;
   flex-direction: column;
-  padding: 0 var(--spacing-small);
+  padding: var(--spacing-small);
   width: 100%;
 }
 
 @media screen and (min-width: 768px) {
   .section {
     align-items: center;
-    width: 50%;
+    border: 1px solid var(--color-gray);
+    box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.3);
+    border-radius: var(--spacing-medium);
+    height: 50vh;
+    width: 49%;
   }
 }

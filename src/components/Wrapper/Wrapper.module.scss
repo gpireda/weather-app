@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  &.start {
+    justify-content: flex-start;
+  }
+
+  &.full-width {
+    width: 100%;
+  }
+}

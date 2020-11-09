@@ -9,6 +9,7 @@ import useCurrentCity from 'hooks/useCurrentCity'
 import parseTimestampToDateString from 'utils/parseTimestampToDateString'
 
 import styles from './CityWeather.module.scss'
+import Wrapper from 'components/Wrapper/Wrapper'
 
 const CityWeather: React.FC<CityWeatherProps> = ({ cities = [] }) => {
   const currentCity = useCurrentCity({ cities })
@@ -19,11 +20,11 @@ const CityWeather: React.FC<CityWeatherProps> = ({ cities = [] }) => {
 
   return (
     <>
-      <Button>
+      <Wrapper classNames={['start', 'full-width']}>
         <Link className={styles['close-link']} to='/'>
-          Close
+          <Button>Close</Button>
         </Link>
-      </Button>
+      </Wrapper>
 
       <Weather
         date={parseTimestampToDateString({ timestamp: currentCity.dt })}

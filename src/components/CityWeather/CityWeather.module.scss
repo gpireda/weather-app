@@ -1,3 +1,9 @@
 .close-link {
   color: var(--color-white);
+  display: inline-block;
+  min-width: 180px;
+
+  > button {
+    width: 100%;
+  }
 }
