@@ -1,4 +1,11 @@
 .container {
   display: flex;
+  flex-direction: column;
   margin-top: var(--spacing-medium);
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    flex-direction: row;
+  }
 }
