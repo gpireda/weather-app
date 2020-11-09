@@ -27,7 +27,7 @@ const App = () => {
   function handleFetchCitiesButtonClick() {
     onCitiesReset()
 
-    client.fetchCities({ latitude: latitude!, longitude: longitude! }).then(onCitiesChanged)
+    client.fetchCities({ lat: latitude!, lng: longitude! }).then(onCitiesChanged)
   }
 
   return (

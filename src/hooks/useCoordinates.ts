@@ -3,22 +3,22 @@ import { useEffect, useState } from 'react'
 import getGeolocationCoordinates from 'utils/getGeolocationCoordinates'
 
 function useCoordinates() {
-  const [latitude, setLatitude] = useState<number>()
-  const [longitude, setLongitude] = useState<number>()
+  const [lat, setLatitude] = useState<number>()
+  const [lng, setLongitude] = useState<number>()
 
   useEffect(() => {
     getGeolocationCoordinates(handleCoordinatesChange)
   }, [])
 
-  function handleCoordinatesChange({ latitude, longitude }: GeographicalPoint) {
-    setLatitude(latitude)
-    setLongitude(longitude)
+  function handleCoordinatesChange({ lat, lng }: GeographicalPoint) {
+    setLatitude(lat)
+    setLongitude(lng)
   }
 
   return {
-    isLoading: !latitude || !longitude,
-    latitude,
-    longitude,
+    isLoading: !lat || !lng,
+    latitude: lat,
+    longitude: lng,
     onCoordinatesChange: handleCoordinatesChange,
   }
 }

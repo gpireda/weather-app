@@ -16,9 +16,9 @@ const Map: React.FC<MapProps> = ({
       bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY ?? '' }}
       center={{ lat: latitude, lng: longitude }}
       defaultZoom={defaultZoom}
-      onClick={({ lat, lng }) => onCoordinatesChange({ latitude: lat, longitude: lng })}
+      onClick={({ lat, lng }) => onCoordinatesChange({ lat, lng })}
     >
-      <Marker latitude={latitude} longitude={longitude} />
+      <Marker lat={latitude} lng={longitude} />
     </GoogleMapReact>
   </div>
 )

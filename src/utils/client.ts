@@ -1,7 +1,7 @@
 class Client {
-  fetchCities({ latitude, longitude }: GeographicalPoint) {
+  fetchCities({ lat, lng }: GeographicalPoint) {
     return fetch(
-      `${process.env.REACT_APP_OPEN_WEATHER_API_URL}/find?lat=${latitude}&lon=${longitude}&cnt=15&units=metric&APPID=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}`,
+      `${process.env.REACT_APP_OPEN_WEATHER_API_URL}/find?lat=${lat}&lon=${lng}&cnt=15&units=metric&APPID=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}`,
     ).then(this.parseResponseToJson)
   }
 

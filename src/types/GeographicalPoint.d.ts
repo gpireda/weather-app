@@ -1,4 +1,4 @@
 interface GeographicalPoint {
-  latitude: number
-  longitude: number
+  lat: number
+  lng: number
 }

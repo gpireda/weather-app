@@ -1,15 +1,15 @@
 const defaultCoordinates = {
-  latitude: 45,
-  longitude: 45,
+  lat: 45,
+  lng: 45,
 }
 
 function getGeolocationCoordinates(onGeolocationResult: (params: GeographicalPoint) => void): void {
   navigator.geolocation.getCurrentPosition(
-    ({ coords }) => onGeolocationResult({ latitude: coords.latitude, longitude: coords.longitude }),
+    ({ coords }) => onGeolocationResult({ lat: coords.latitude, lng: coords.longitude }),
     () =>
       onGeolocationResult({
-        latitude: defaultCoordinates.latitude,
-        longitude: defaultCoordinates.longitude,
+        lat: defaultCoordinates.lat,
+        lng: defaultCoordinates.lng,
       }),
   )
 }
