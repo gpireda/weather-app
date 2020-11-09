@@ -6,6 +6,8 @@ import Weather from 'components/Weather/Weather'
 
 import useCurrentCity from 'hooks/useCurrentCity'
 
+import parseTimestampToDateString from 'utils/parseTimestampToDateString'
+
 import styles from './CityWeather.module.scss'
 
 const CityWeather: React.FC<CityWeatherProps> = ({ cities = [] }) => {
@@ -24,6 +26,7 @@ const CityWeather: React.FC<CityWeatherProps> = ({ cities = [] }) => {
       </Button>
 
       <Weather
+        date={parseTimestampToDateString({ timestamp: currentCity.dt })}
         feelsLike={currentCity.main.feels_like}
         humidity={currentCity.main.humidity}
         maximumTemperature={currentCity.main.temp_max}

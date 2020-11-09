@@ -3,6 +3,7 @@ import React from 'react'
 import styles from './Weather.module.scss'
 
 const Weather: React.FC<WeatherProps> = ({
+  date,
   feelsLike,
   humidity,
   maximumTemperature,
@@ -13,13 +14,13 @@ const Weather: React.FC<WeatherProps> = ({
 }) => (
   <div className={styles.weather}>
     <h1 className={styles['city-name']}>{name}</h1>
-    <p>Temperature: {temperature}</p>
-    <p>Humidity: {humidity}</p>
-    <p>Pressure: {pressure}</p>
-    <p>Pressure: {pressure}</p>
-    <p>Maximum temperature: {maximumTemperature}</p>
-    <p>Minimum temperature: {minimumTemperature}</p>
-    <p>Feels like: {feelsLike}</p>
+    <p>Date: {date}</p>
+    <p>Temperature: {Math.round(temperature)} ºC</p>
+    <p>Maximum temperature: {Math.round(maximumTemperature)} ºC</p>
+    <p>Minimum temperature: {Math.round(minimumTemperature)} ºC</p>
+    <p>Feels like: {Math.round(feelsLike)} ºC</p>
+    <p>Humidity: {humidity} %</p>
+    <p>Pressure: {pressure} hPa</p>
   </div>
 )
 

@@ -1,4 +1,5 @@
 interface WeatherProps {
+  date: string
   feelsLike: number
   humidity: number
   name: string
