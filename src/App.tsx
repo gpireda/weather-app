@@ -21,7 +21,7 @@ const App = () => {
   const { cities, isFetching, onCitiesChanged, onCitiesReset } = useCities()
 
   if (isLoading) {
-    return <p>Loading</p>
+    return <Spinner />
   }
 
   function handleFetchCitiesButtonClick() {
