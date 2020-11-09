@@ -1,13 +1,8 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Route } from 'react-router-dom'
 
-import Button from 'components/Button/Button'
-import Cities from 'components/Cities/Cities'
-import CityWeather from 'components/CityWeather/CityWeather'
 import Layout from 'components/Layout/Layout'
 import Map from 'components/Map/Map'
-import Modal from 'components/Modal/Modal'
-import Section from 'components/Section/Section'
 import Spinner from 'components/Spinner/Spinner'
 
 import useCities from 'hooks/useCities'
@@ -17,7 +12,14 @@ import useViewport from 'hooks/useViewport'
 import client from 'utils/client'
 
 import styles from './App.module.scss'
-import Wrapper from 'components/Wrapper/Wrapper'
+
+const Button = React.lazy(() => import('components/Button/Button'))
+const Cities = React.lazy(() => import('components/Cities/Cities'))
+const CityWeather = React.lazy(() => import('components/CityWeather/CityWeather'))
+// const Map = React.lazy(() => import('components/Map/Map'))
+const Modal = React.lazy(() => import('components/Modal/Modal'))
+const Section = React.lazy(() => import('components/Section/Section'))
+const Wrapper = React.lazy(() => import('components/Wrapper/Wrapper'))
 
 const App = () => {
   const { isMobile } = useViewport()
@@ -36,33 +38,45 @@ const App = () => {
 
   function renderWeatherSection() {
     return (
-      <Section>
-        <CityWeather cities={cities} />
-      </Section>
+      <Suspense fallback={<Spinner />}>
+        <Section>
+          <CityWeather cities={cities} />
+        </Section>
+      </Suspense>
     )
   }
 
   return (
     <Layout>
-      <Map latitude={latitude!} longitude={longitude!} onCoordinatesChange={onCoordinatesChange} />
+      <Suspense fallback={<Spinner />}>
+        <Map
+          latitude={latitude!}
+          longitude={longitude!}
+          onCoordinatesChange={onCoordinatesChange}
+        />
+      </Suspense>
 
       <div className={styles.container}>
         <Route path='/'>
-          <Section>
-            <Wrapper classNames={['start', 'full-width']}>
-              <Button disabled={isFetching} onClick={handleFetchCitiesButtonClick}>
-                Search
-              </Button>
-            </Wrapper>
+          <Suspense fallback={<Spinner />}>
+            <Section>
+              <Wrapper classNames={['start', 'full-width']}>
+                <Button disabled={isFetching} onClick={handleFetchCitiesButtonClick}>
+                  Search
+                </Button>
+              </Wrapper>
 
-            {isFetching && <Spinner height={40} />}
+              {isFetching && <Spinner height={40} />}
 
-            {cities && <Cities cities={cities} />}
-          </Section>
+              <Suspense fallback={<Spinner />}>{cities && <Cities cities={cities} />}</Suspense>
+            </Section>
+          </Suspense>
         </Route>
 
         <Route path='/:city'>
-          {isMobile ? <Modal>{renderWeatherSection()}</Modal> : renderWeatherSection()}
+          <Suspense fallback={<Spinner />}>
+            {isMobile ? <Modal>{renderWeatherSection()}</Modal> : renderWeatherSection()}
+          </Suspense>
         </Route>
       </div>
     </Layout>
