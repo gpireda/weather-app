@@ -30,7 +30,7 @@ Simple application, based on (create-react-app)[https://github.com/facebook/crea
 
 1. Clone the project.
 2. In the terminal: `cd /weather-app`.
-3. Replace `REACT_APP_GOOGLE_MAPS_API_KEY` and `REACT_APP_OPEN_WEATHER_API_KEY` with keys in `.env`.
+3. Replace `REACT_APP_GOOGLE_MAPS_API_KEY` and `REACT_APP_OPEN_WEATHER_API_KEY` placeholder values with actual keys in `.env`.
 4. Install dependencies: `yarn` or `npm install`.
 5. Run: `yarn start` or `npm run start`.
 
