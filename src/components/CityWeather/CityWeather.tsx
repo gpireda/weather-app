@@ -6,6 +6,8 @@ import Weather from 'components/Weather/Weather'
 
 import useCurrentCity from 'hooks/useCurrentCity'
 
+import styles from './CityWeather.module.scss'
+
 const CityWeather: React.FC<CityWeatherProps> = ({ cities = [] }) => {
   const currentCity = useCurrentCity({ cities })
 
@@ -15,9 +17,11 @@ const CityWeather: React.FC<CityWeatherProps> = ({ cities = [] }) => {
 
   return (
     <>
-      <Link to='/'>
-        <Button>Close</Button>
-      </Link>
+      <Button>
+        <Link className={styles['close-link']} to='/'>
+          Close
+        </Link>
+      </Button>
 
       <Weather
         feelsLike={currentCity.main.feels_like}
