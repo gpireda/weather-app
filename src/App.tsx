@@ -48,7 +48,9 @@ const App = () => {
       <div className={styles.container}>
         <Route path='/'>
           <Section>
-            <Button onClick={handleFetchCitiesButtonClick}>Search</Button>
+            <Button disabled={isFetching} onClick={handleFetchCitiesButtonClick}>
+              Search
+            </Button>
 
             {isFetching && <Spinner height={40} />}
 
