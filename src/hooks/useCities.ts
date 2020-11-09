@@ -2,11 +2,14 @@ import camelCase from 'camelcase-keys'
 
 import { useState } from 'react'
 
+import distinctBy from 'utils/distinctBy'
+
 function useCities() {
   const [cities, setCities] = useState<Array<City>>()
 
   function handleCitiesChanged({ list }: { list: Array<City> }) {
-    setCities(camelCase(list))
+    const distinctCities = distinctBy(list, 'name') as unknown
+    setCities(camelCase(distinctCities as Array<City>))
   }
 
   function resetCities() {
